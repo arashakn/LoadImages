@@ -1,9 +1,5 @@
-package com.spin.network
+package com.spin.api
 
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkInfo
-import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -16,6 +12,7 @@ object ImagesAPIClient {
 //    const val cacheSize = (5 * 1024 * 1024).toLong()
 //    var myCache = Cache(AppApplication.applicationContext().cacheDir, cacheSize)
     private val imagesAPI : ImagesAPI
+
 
     init {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
@@ -42,6 +39,13 @@ object ImagesAPIClient {
             .build()
 
         imagesAPI = retrofit.create(ImagesAPI::class.java)
+    }
+
+
+    val retrofitBuilder : Retrofit.Builder? by lazy{
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
     }
 
     fun getImageService() : ImagesAPI = imagesAPI

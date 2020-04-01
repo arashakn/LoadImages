@@ -1,4 +1,4 @@
-package com.spin.network
+package com.spin.api
 
 import com.spin.models.Images
 import io.reactivex.Single
