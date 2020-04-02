@@ -39,8 +39,10 @@ class ImagesAdapter ( val images : ArrayList<Image> = ArrayList<Image>()) : Recy
     }
 
     fun updateImages(list : ArrayList<Image>){
-        images.clear()
-        images.addAll(list)
-        notifyDataSetChanged()
+        if(!list.isNullOrEmpty()) {
+            images.clear()
+            images.addAll(list)
+            notifyDataSetChanged()
+        }
     }
 }

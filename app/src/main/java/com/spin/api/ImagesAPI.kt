@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface ImagesAPI {
     @GET("bins/n30si")
-    fun getImages() : Single<Images>
+    suspend fun getImages() : Images
 }
