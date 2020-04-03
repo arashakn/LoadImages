@@ -15,31 +15,14 @@ import java.lang.RuntimeException
 
 class ImagesListViewModel : ViewModel() {
     val error = MutableLiveData<Boolean>(false)
-    val progress = MutableLiveData<Boolean>(false)
     var allImages = liveData {
         error.value = false
-        progress.value = true
         try {
-            val images = ImagesAPIClient.imagesAPI.getImages()
+//            val images = ImagesAPIClient.imagesAPI.getImages()
+            val images = MainRepository.getAllImages()
             emit(images)
         } catch (ex: Exception) {
             error.value = true
-        }
-        progress.value = false
-    }
-
-
-    fun getImages() = viewModelScope.launch {
-        allImages = liveData {
-            error.value = false
-            progress.value = true
-            try {
-                val images = ImagesAPIClient.imagesAPI.getImages()
-                emit(images)
-            } catch (ex: Exception) {
-                error.value = true
-            }
-            progress.value = false
         }
     }
 }

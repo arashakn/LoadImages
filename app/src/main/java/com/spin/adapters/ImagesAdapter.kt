@@ -9,8 +9,7 @@ import com.spin.models.Image
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.image_list_item.view.*
 
-
-class ImagesAdapter ( val images : ArrayList<Image> = ArrayList<Image>()) : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>(){
+class ImagesAdapter ( val images : ArrayList<Image> = ArrayList()) : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.image_list_item ,parent, false)

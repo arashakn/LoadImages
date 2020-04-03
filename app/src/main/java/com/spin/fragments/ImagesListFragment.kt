@@ -49,4 +49,8 @@ class ImagesListFragment : Fragment() {
     }
 
 
+    override fun onResume() {
+        super.onResume()
+    }
+
 }
