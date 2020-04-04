@@ -7,14 +7,11 @@ class AppApplication : Application() {
     override fun onCreate() {
         super.onCreate()
     }
-
     init {
         instance = this
     }
-
     companion object {
         private var instance: AppApplication? = null
-
         fun applicationContext(): Context {
             return instance!!
         }

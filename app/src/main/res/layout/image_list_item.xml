@@ -1,30 +1,35 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dip">
+    android:background="@android:color/darker_gray"
+    android:padding="5dp"
+    >
 
-    <LinearLayout
-        android:id="@+id/rl_cv"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivContent"
+        <LinearLayout
+            android:id="@+id/rl_cv"
             android:layout_width="match_parent"
-            android:layout_height="160dip"
-            android:layout_margin="10dip"
-            android:background="@drawable/ic_launcher_background"
-            android:scaleType="centerCrop"
-            />
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            />
-    </LinearLayout>
+            android:orientation="vertical">
 
-</androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/ivContent"
+                android:layout_width="match_parent"
+                android:layout_height="180dip"
+                android:background="@drawable/ic_launcher_background"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
