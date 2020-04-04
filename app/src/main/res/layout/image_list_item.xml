@@ -12,22 +12,19 @@
 
         <ImageView
             android:id="@+id/ivContent"
-            android:layout_width="80dip"
-            android:layout_height="80dip"
-            android:layout_alignParentLeft="true"
-            android:layout_centerHorizontal="true"
+            android:layout_width="match_parent"
+            android:layout_height="160dip"
             android:layout_margin="10dip"
-            android:background="@drawable/ic_launcher_background" />
+            android:background="@drawable/ic_launcher_background"
+            android:scaleType="centerCrop"
+            />
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/tvTitle"
-            android:ellipsize="end"
-            android:maxLines="2" />
+            android:layout_gravity="center_horizontal"
+            />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

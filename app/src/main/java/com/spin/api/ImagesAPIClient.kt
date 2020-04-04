@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 object ImagesAPIClient {
-    const val BASE_URL = "https://api.myjson.com"
+    const val BASE_URL = "https://s3-us-west-1.amazonaws.com"
     const val cacheSize = (5 * 1024 * 1024).toLong()
     var myCache = Cache(AppApplication.applicationContext().cacheDir, cacheSize)
     private  val httpClient : OkHttpClient

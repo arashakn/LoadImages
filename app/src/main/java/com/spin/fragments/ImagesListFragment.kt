@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.spin.MainActivity
 
 import com.spin.R
 import com.spin.adapters.ImagesAdapter
@@ -29,8 +31,10 @@ class ImagesListFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ImagesListViewModel::class.java)
         imagesAdapter = ImagesAdapter()
-        rvImages.adapter = imagesAdapter
-        rvImages.layoutManager = LinearLayoutManager(context)
+         rvImages.apply {
+             adapter = imagesAdapter
+             layoutManager = GridLayoutManager(activity, 2)
+         }
         observeViewModel()
     }
 
@@ -43,14 +47,10 @@ class ImagesListFragment : Fragment() {
 
         viewModel.error.observe(viewLifecycleOwner, Observer{
             it?.let {
-                Toast.makeText(activity,"Error!",Toast.LENGTH_LONG).show()
+                if(it) {
+                    Toast.makeText(activity, "Error!", Toast.LENGTH_LONG).show()
+                }
             }
         })
     }
-
-
-    override fun onResume() {
-        super.onResume()
-    }
-
 }

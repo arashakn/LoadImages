@@ -5,6 +5,6 @@ import io.reactivex.Single
 import retrofit2.http.GET
 
 interface ImagesAPI {
-    @GET("bins/n30si")
+    @GET("net.raquo.images/ContentStub.json")
     suspend fun getImages() : Images
 }
