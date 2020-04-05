@@ -31,13 +31,11 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
 }
 
 def ret_version = '2.8.1'
 def lifecycle_ext_ver = '2.2.0'
 def coroutines_version = "1.2.1"
-
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -69,5 +67,5 @@ dependencies {
 
     //ViewModelScope +liveData
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0-beta01"
-    implementation  "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha01"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha01"
 }
