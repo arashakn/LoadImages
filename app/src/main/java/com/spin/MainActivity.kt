@@ -3,7 +3,6 @@ package com.spin
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.spin.fragments.ImagesListFragment
-import com.spin.repository.MainRepository
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

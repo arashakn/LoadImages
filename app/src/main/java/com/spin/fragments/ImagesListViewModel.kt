@@ -5,7 +5,7 @@ import com.spin.repository.MainRepository
 
 class ImagesListViewModel : ViewModel() {
 
-    val error = MutableLiveData<Boolean>(false)
+    val error = MutableLiveData(false)
     /**
      * Utilizing new API of coroutines for livedata using livedata builder function
      * getAllImages() is a suspend function declared

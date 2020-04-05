@@ -58,9 +58,9 @@ class ImagesAdapter(val images: ArrayList<Image> = ArrayList(), context: Activit
 
                         override fun onError(e: Exception?) {
                         }
-                    });
+                    })
             }
-            view.tvTitle.text = image?.title ?: ""
+            view.tvTitle.text = image.title ?: ""
         }
     }
 

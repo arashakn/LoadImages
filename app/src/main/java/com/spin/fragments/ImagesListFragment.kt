@@ -41,7 +41,7 @@ class ImagesListFragment : Fragment() {
     }
 
     /**
-     * observing livedata in Fragment
+     * observing live data in Fragment
      */
     private fun observeViewModel(){
         viewModel.allImages.observe(viewLifecycleOwner, Observer {
