@@ -5,20 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-
+import androidx.recyclerview.widget.GridLayoutManager
 import com.spin.R
 import com.spin.adapters.ImagesAdapter
 import kotlinx.android.synthetic.main.images_list_fragment.*
 
+/**
+ * Main Fragment in order to display list of images
+ */
 class ImagesListFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = ImagesListFragment()
-    }
-
     private lateinit var viewModel: ImagesListViewModel
     private lateinit var imagesAdapter : ImagesAdapter
 
@@ -31,28 +29,32 @@ class ImagesListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(ImagesListViewModel::class.java)
-        imagesAdapter = ImagesAdapter()
-        rvImages.adapter = imagesAdapter
-        rvImages.layoutManager = LinearLayoutManager(context)
-        observeViewModel()
+        activity?.let {
+            viewModel = ViewModelProvider(it).get(ImagesListViewModel::class.java)//makes the ViewModel scoop to activity rather than fragment
+            imagesAdapter = ImagesAdapter(context = activity)
+            rvImages.apply {
+                adapter = imagesAdapter
+                layoutManager = GridLayoutManager(activity, 2)
+            }
+            observeViewModel()
+        }
     }
 
-    override fun onStart() {
-        super.onStart()
-        viewModel.fetchImages()
-    }
+    /**
+     * observing live data in Fragment
+     */
     private fun observeViewModel(){
-        viewModel.images.observe(viewLifecycleOwner, Observer{
+        viewModel.allImages.observe(viewLifecycleOwner, Observer {
             it?.let {
-                imagesAdapter.updateImages(it)
+                imagesAdapter.updateImages(it.data)
+            }
+        })
+        viewModel.error.observe(viewLifecycleOwner, Observer{
+            it?.let {
+                if(it) {
+                    Toast.makeText(activity, "Network Error!", Toast.LENGTH_LONG).show() // In case of network error, a message will be displayed to the user
+                }
             }
         })
     }
-
-
-
-
-
-
 }

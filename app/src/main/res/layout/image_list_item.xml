@@ -1,33 +1,35 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dip">
+    android:background="@android:color/darker_gray"
+    android:padding="5dp"
+    >
 
-    <LinearLayout
-        android:id="@+id/rl_cv"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/ivContent"
-            android:layout_width="80dip"
-            android:layout_height="80dip"
-            android:layout_alignParentLeft="true"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dip"
-            android:background="@drawable/ic_launcher_background" />
-
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/rl_cv"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/tvTitle"
-            android:ellipsize="end"
-            android:maxLines="2" />
-    </LinearLayout>
+            android:orientation="vertical">
 
-</androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/ivContent"
+                android:layout_width="match_parent"
+                android:layout_height="180dip"
+                android:background="@drawable/ic_launcher_background"
+                android:scaleType="centerCrop" />
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>
