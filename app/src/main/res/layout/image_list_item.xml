@@ -28,6 +28,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="10dp" />
+            <Button
+                android:id="@+id/btnFavorite"
+                android:text="Add to Fav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

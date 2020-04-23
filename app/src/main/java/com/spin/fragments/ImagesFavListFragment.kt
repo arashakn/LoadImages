@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.images_list_fragment.*
 /**
  * Main Fragment in order to display list of images
  */
-class ImagesListFragment : Fragment() , OnImageClickListener {
+class ImagesFavListFragment : Fragment() , OnImageClickListener {
     private lateinit var viewModel: ImagesListViewModel
     private lateinit var imagesAdapter : ImagesAdapter
 
@@ -32,7 +32,7 @@ class ImagesListFragment : Fragment() , OnImageClickListener {
         super.onActivityCreated(savedInstanceState)
         activity?.let {
             viewModel = ViewModelProvider(it).get(ImagesListViewModel::class.java)//makes the ViewModel scoop to activity rather than fragment
-            imagesAdapter = ImagesAdapter(context = activity, isFav =  false)
+            imagesAdapter = ImagesAdapter(context = activity, isFav =  true)
             rvImages.apply {
                 adapter = imagesAdapter
                 layoutManager = GridLayoutManager(activity, 2)
