@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.spin.R
 import com.spin.models.Image
+import com.spin.repository.MainRepository
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.image_list_item.view.*
@@ -19,6 +20,7 @@ class ImagesAdapter(val images: ArrayList<Image> = ArrayList(), context: Activit
     private val picasso = Picasso.get()
     val width: Int
     val height: Int
+    var fav : ArrayList<String>
 
     init {
         val displayMetrics = DisplayMetrics()
@@ -28,6 +30,7 @@ class ImagesAdapter(val images: ArrayList<Image> = ArrayList(), context: Activit
          */
         width = (displayMetrics.widthPixels / 2.2).roundToInt()
         height = width
+        fav = MainRepository.getArrayListOfFav()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
@@ -61,7 +64,21 @@ class ImagesAdapter(val images: ArrayList<Image> = ArrayList(), context: Activit
                     })
             }
             view.tvTitle.text = image.title ?: ""
-        }
+            val textCopy = if(fav.contains(image.url)) "remove from Fav" else "add to Fav"
+            view.btnFav.text = textCopy
+            view.btnFav.setOnClickListener {
+                if(image.url != null) {
+                    if (fav.contains(image.url)) {
+                        fav.remove(image.url)
+                        it.btnFav.text = "add to Fav"
+                    } else {
+                        fav.add(image?.url)
+                        view.btnFav.text = "remove from Fav"
+                    }
+                    MainRepository.saveArrayList(fav,MainRepository.SP_KEY)
+                }
+            }
+            }
     }
 
     fun updateImages(list: ArrayList<Image>) {
